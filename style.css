@@ -1,0 +1,46 @@
+.jumbotron{
+    margin-bottom: 0px;
+    
+}
+.row{
+    height: 200px;   
+}
+.container{
+  width: 200px;
+  margin: 0 auto;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  ;
+}  
+.chat-container{
+  height: 400px;
+  overflow: auto;
+  transform: rotate(180deg);
+  direction: rtl;
+} 
+.message{
+border-bottom: solid 1px #ccc;
+padding: 20px;
+transform: rotate(180deg);
+direction: ltr;
+}
+
+.avatar{
+    float: left;
+    margin-right: 5px;
+}
+.datetime{
+    float: right;
+    color: #999;
+}
+.send-message-form input{
+    width: 50%;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+}
+button{
+display: none;
+}
