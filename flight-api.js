@@ -1,0 +1,1 @@
+var queryURL:("http://api.travelpayouts.com/v2/prices/latest?currency=usd&period_type=year&page=1&limit=30&show_to_affiliates=true&sorting=price&trip_class=0&token=PutHereYourToken9fce94023aebd6561cac3dc4d92c0482");
