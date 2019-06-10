@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exchange Rate API</title>
+    <!-- link Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- link css -->
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    
+    <!-- link jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- title -->
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <div>
+            <div class="container">
+                <h1 class="display-4">Exchange Rate</h1>
+                <p class="lead">Covert your currencies!</p>
+                <hr>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- this is where search query will go -->
+    <!-- <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" >CAD</a>
+            <a class="dropdown-item" >EUR</a>
+            <a class="dropdown-item" >RUP</a>
+        </div>
+    </div> -->
+
+    <div class ="row" id = "inputDiv">
+        <div class = "col-md-12">
+        <form>
+            <label for="base-input">Enter Base Country Code</label>
+            <input type="text" id ="base-input" placeholder="Example: USD">
+            <!-- this button triggers new emotion to be added -->
+            <label for="symbols-input">Enter currency to convert to</label>
+            <input type="text" id ="symbols-input" placeholder="Example: EUR">
+            <input type="button" class="btn btn-success" type="submit" value="Add to list">
+        </form> 
+        </div>  
+    </div>
+    <div id="results"></div>
+</div>
+ 
+<script src=exchange.js></script>    
+</body>
+</html>
