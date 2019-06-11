@@ -1,14 +1,11 @@
 
 function callApi (){
     $("#results").empty();
-    var startCode = $("#base-input").val().toUpperCase();
-    startCode.toUpperCase();
-    console.log(startCode);
-    var endCode = $("#symbols-input").val().toUpperCase();
-    endCode.toUpperCase();
-    console.log(endCode);
+
+    var endCurrency = $(this).attr("data-name");
+    console.log(endCurrency);
     
-    var queryURL = "https://openexchangerates.org/api/latest.json?app_id=296d12934b28477790da87204c8eae86&base="+startCode+"&symbols="+endCode;
+    var queryURL = "https://openexchangerates.org/api/latest.json?app_id=296d12934b28477790da87204c8eae86&symbols="+endCurrency;
     // var queryURL = "https://openexchangerates.org/api/latest.json?app_id=296d12934b28477790da87204c8eae86&base=EUR&symbols=USD";
     $.ajax({
         url: queryURL,
@@ -25,7 +22,20 @@ function callApi (){
     })
 }
 
-$(".btn").on("click", function(event){
+$("#currencyBtn").on("click", function(event){
     event.preventDefault();
-    callApi();
+    //console.log(startCode);
+    var endCode = $("#symbols-input").val();
+    // endCode.toUpperCase();
+    console.log("end code: "+endCode);
+    
+    var newButton = $("<button>");
+    newButton.addClass("dropdown-item");
+    newButton.attr("type", "button");
+    newButton.attr("data-name", endCode)
+    newButton.text(endCode);
+    $(".dropdown-menu").append(newButton);
+
 })
+
+$(document).on("click", ".dropdown-item", callApi);
