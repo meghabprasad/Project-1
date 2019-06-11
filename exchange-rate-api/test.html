@@ -31,25 +31,39 @@
         </div>
         </div>
     </div>
-    <div class="row dropdown">
+    <div class="row">
+    <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Dropdown
+            My Saved Currencies
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button">EUR</button>
-            <button class="dropdown-item" type="button">CAD</button>
-            <button class="dropdown-item" type="button">GBP</button>
+            <button class="dropdown-item" type="button" data-name="EUR">EUR</button>
+            <button class="dropdown-item" type="button" data-name="CAD">CAD</button>
+            <button class="dropdown-item" type="button" data-name="GBP">GBP</button>
         </div>
     </div>
-
-    <div class ="row" id = "inputDiv">
+    <div id = "inputDiv">
         <div class = "col-md-12">
         <form>
             <!-- this button triggers new currency to be added -->
             <label for="symbols-input">Enter currency to convert to</label>
             <input type="text" id ="symbols-input" placeholder="Example: EUR">
-            <input type="button" class="btn btn-success" type="submit" value="Add to list" id="currencyBtn">
+            <input type="button" class="btn btn-success" id="addCurrencyBtn" type="submit" value="Add to list">
+        </form> 
+        </div>  
+    </div>
+
+    </div>
+
+
+    <div id = "inputDiv">
+        <div class = "col-md-12">
+        <form>
+            <!-- this button triggers new currency to be added -->
+            <label for="symbols-input">Enter currency to convert to</label>
+            <input type="text" id ="symbols-input" placeholder="Example: EUR">
+            <input type="button" class="btn btn-success" id="addCurrencyBtn" type="submit" value="Add to list">
         </form> 
         </div>  
     </div>
