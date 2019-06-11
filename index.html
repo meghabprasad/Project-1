@@ -258,8 +258,15 @@
       <div class="col-md-8">
         <!-- saved searched go here -->
         <div class="row">
-          <div class="col-md-4 dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+          <div class="col-md-3"></div>
+          <div class="col-md-4">
+            <select class="form-control form-control-lg currency-list">
+                <option>Select Currency</option>
+              </select>
+            </div>    
+
+          <!-- <div class="col-md-4 dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2 exchange-dropdown" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   My Saved Currencies
               </button>
@@ -268,23 +275,23 @@
                   <button class="dropdown-item" type="button" data-name="CAD">CAD</button>
                   <button class="dropdown-item" type="button" data-name="GBP">GBP</button>
               </div>
-          </div>
+          </div> -->
           <!-- search query goes here -->
-          <div class = "col-md-8" id = "inputDiv">
+          <div class = "col-md-2" id = "inputDiv">
               <form>
                   <!-- this button triggers new currency to be added -->
-                  <label for="symbols-input">Convert to</label>
-                  <input type="text" id ="symbols-input" placeholder="Example: EUR">
-                  <input type="button" class="btn btn-success" id="addCurrencyBtn" type="submit" value="Add to list">
+                  <input type="button" class="btn btn-success" id="addCurrencyBtn" type="submit" value="Submit" style="height:48px">
               </form> 
           </div>
+          <div class="col-md-3"></div>
         </div>
         <br>
         <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-8">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
             <div id="results"></div>
-          </div>  
+          </div> 
+          <div class="col-md-3"></div> 
         </div>
       </div>
 
