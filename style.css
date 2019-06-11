@@ -5,9 +5,15 @@
     margin-bottom: 0px;
     
 }
+<<<<<<< HEAD
 /* .row{
     height: 200px;   
 } */
+=======
+.row{
+    /* height: 200px;    */
+}
+>>>>>>> 100e73444cfb7aae6fbcf161bd2791de34ced902
 .carousel-item{
     height:246px;
 }
@@ -58,7 +64,7 @@ direction: ltr;
     padding: 10px;
 }
 button{
-display: none;
+/* display: none; */
 }
 #scrollbar2{
     margin-top:0px !important;
