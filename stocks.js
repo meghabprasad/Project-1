@@ -38,7 +38,7 @@ $(document).on("click", ".stock", function() {
             newElem.append($("<h1>" + response.data[0].name + "</h1>"));
             console.log("This");
             console.log(this);
-            newElem.append($("<img src = 'https://logo.clearbit.com/" + currentName + ".com?size=60'>"));
+            newElem.append($("<img src = 'https://logo.clearbit.com/" + currentName.replace(" ", "") + ".com?size=60'>"));
             newElem.append($("<h3>Yesterday's Closing Price: $" + response.data[0].close_yesterday + "</h3>"));
             newElem.append($("<h3>Current Price: $" + response.data[0].price + "</h3>"));
             // newElem.append($("<h1>" + ))
