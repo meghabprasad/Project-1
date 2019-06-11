@@ -12,11 +12,14 @@ $("#addStock").on("click", function() {
         var newDropDown = $("<button class='dropdown-item stock' type='button'>" + $("#stockNameInput").val() + ": " + $("#stockTickerInput").val() + "</button>");
         newDropDown.attr("data-name", $("#stockNameInput").val());
         newDropDown.attr("data-ticker", $("#stockTickerInput").val());
+        $("#stockNameInput").val("");
+        $("#stockTickerInput").val("");
         $("#menu").append(newDropDown);
     }
 })
 
 $(document).on("click", ".stock", function() {
+    $("#companies").empty();
     console.log("data-ticker");
     console.log($(this).attr("data-ticker"));
     var symbol = $(this).attr("data-ticker").toUpperCase();
@@ -35,7 +38,7 @@ $(document).on("click", ".stock", function() {
             newElem.append($("<h1>" + response.data[0].name + "</h1>"));
             console.log("This");
             console.log(this);
-            newElem.append($("<img src = 'https://logo.clearbit.com/" + currentName + ".com'>"));
+            newElem.append($("<img src = 'https://logo.clearbit.com/" + currentName + ".com?size=60'>"));
             newElem.append($("<h3>Yesterday's Closing Price: $" + response.data[0].close_yesterday + "</h3>"));
             newElem.append($("<h3>Current Price: $" + response.data[0].price + "</h3>"));
             // newElem.append($("<h1>" + ))
