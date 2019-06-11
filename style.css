@@ -6,7 +6,7 @@
     
 }
 .row{
-    height: 200px;   
+    /* height: 200px;    */
 }
 .carousel-item{
     height:246px;
@@ -58,7 +58,7 @@ direction: ltr;
     padding: 10px;
 }
 button{
-display: none;
+/* display: none; */
 }
 #scrollbar2{
     margin-top:0px !important;
