@@ -26,29 +26,93 @@
 
   
 
-   <h2>Origin:
-    <input id="origin" type="text">
+
+      <!-- <div class="form-group col-md-4">
+          <label for="inputStates"><h2>Origin</h2></label>
+          <select id="origin" class="form-control">
+            <option id="skyTaxi" ></option>
+            <option id="skyTaxi">HGK</option>
+            <option id="skyTaxi">SFO</option>
+            <option id="skyTaxi">LAX</option>
+          </select>
+        </div> -->
     <!-- <input id="origin" type="text"> -->
-  </h2>
+    <!-- <input id="origin" type="text"> -->
+    <!-- <div class="form-group col-md-4">
+    <label for="inputStates"><h2>destination</h2></label>
+    <select id="destination" class="custom-select">
+      <option selected>Pick an current</option> -->
+      <!-- <option value="HGK">HGK</option>
+      <option value="SFO">SFO</option>
+      <option value="LAX">LAX</option>
+    </select>
+  </div> --> 
+
+  <!-- <h2>Destination: -->
+   <!-- <input id="destination" type="text"></input> -->
 
 
-  <h2>Destination:
-   <input id="destination" type="text">
-   <input id="to" value="Save" type="submit">
-
-   <div class="dropdown">
+   <div class="dropdown mb-5">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown button
-    </button>
+      Origin
+    </button> 
+    
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">SFO</a>
-      <a class="dropdown-item" href="#">LAX</a>
-      <a class="dropdown-item" href="#">HKG</a>
+      <button class="dropdown-item current " value="SFO">San Francisco</button>
+      <button class="dropdown-item current" value="LAX">Los Angeles</button>
+      <button class="dropdown-item current" value="BCN">Spain</button>
+      <button class="dropdown-item current" value="SEA">Seattle</button>
+      <button class="dropdown-item current" value="ATL">Atlanta</button>
+      <button class="dropdown-item current" value="DFW">Dallas</button>
+      <button class="dropdown-item current" value="DEN">Denver</button>
+      <button class="dropdown-item current" value="NYC">New York</button>
+      <button class="dropdown-item current" value="LAS">Las Vegas</button>
     </div>
   </div>
-  
- 
-</form>
+  <div id="comingFrom"> </div>
 
+ 
+
+   <div class="dropdown mb-5">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Destination
+    </button> 
+    
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <button class="dropdown-item going" value="SFO">San Francisco</button>
+      <button class="dropdown-item going" value="LAX">Los Angeles</button>
+      <button class="dropdown-item going" value="HKG">Hong Kong</button>
+      <button class="dropdown-item going" value="MAD">Madrid</button>
+      <button class="dropdown-item going" value="ORD">Orlando</button>
+      <button class="dropdown-item going" value="DFW">Dallas</button>
+      <button class="dropdown-item going" value="DEN">Denver</button>
+      <button class="dropdown-item going" value="NYC">New York</button>
+      <button class="dropdown-item going" value="LAS">Las Vegas</button>
+    </div>
+  </div>
+  <div id="goingTo"> </div>
+
+  <table id="flightPrices">
+      <tr>
+          <th>
+              Price
+          </th>
+          <th>
+            Return Date
+        </th>
+        <th>
+            Website
+        </th>
+        <th>
+            Flight Changes
+        </th>
+
+      </tr>
+  
+ </table>
+
+
+
+<input id="to" value="Find" type="submit">
 </body>
 </html>
