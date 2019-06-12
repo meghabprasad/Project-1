@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- SIGN IN FORM -->
+    <h1>SIGN IN</h1>
+    <input type="text" name="email" id="si-email">
+    <input type="text" name="password" id="si-password">
+    <button id="sign-in">SIGN IN</button>
+
+    <br><br>
+    <hr>
+    <br><br>
+
+    <!-- SIGN UP FORM -->
+    <h1>SIGN UP</h1>
+    <input type="text" name="email" id="su-email">
+    <input type="text" name="password" id="su-password">
+    <button id="sign-up">SIGN UP</button>
+
+
+    <!-- FIREBASE - BASE CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <!-- FIREBASE - AUTH CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <!-- FIREBASE - REALTIME DB CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+    <!-- CLIENT-SIDE JAVASCRIPT -->
+    <script>
+
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBefbqzOn-x0T7jfEfveEuQZ5JnNgw28MA",
+            authDomain: "login-test-e8efe.firebaseapp.com",
+            databaseURL: "https://login-test-e8efe.firebaseio.com",
+            projectId: "login-test-e8efe",
+            storageBucket: "login-test-e8efe.appspot.com",
+            messagingSenderId: "962526021188",
+            appId: "1:962526021188:web:cc26c4d8b489f2a5"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        var database = firebase.database();
+
+        // SIGN UP
+        // -------
+        // When #sign-up button is clicked:
+        $("#sign-up").on("click", function (event) {
+            event.preventDefault();
+
+            // get email and password values of text inputs
+            var email = $("#su-email").val().trim()
+            var password = $("#su-password").val().trim()
+
+            // pass email and password to Firebase's sign up function
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(function (response) {
+                    // response only comes if sign up succeeds
+                    console.log("SIGN UP: ", response);
+                    // redirect page to "redirect.html" file
+
+                    // When new user is created, sets their email to database at path defined by their user ID
+                    database.ref("/" + response.user.uid).set({
+                        email: response.user.email
+                    })
+                        .then(function () {
+                            // After it's done setting to database, redirect to other page
+                            window.location = "redirect.html";
+                        })
+                })
+                .catch(function (error) {
+                    // If email is already taken, error message indicating this will be logged to console (you could display it to the HTML instead)
+                    console.log(error.message);
+                });
+        })
+
+        // SIGN IN
+        // -------
+        // When #sign-up button is clicked, pulls values of text inputs and passes them to Firebase's createUserWithEmailAndPassword function
+        $("#sign-in").on("click", function (event) {
+            event.preventDefault();
+
+            // get email and password values of text inputs
+            var email = $("#si-email").val().trim()
+            var password = $("#si-password").val().trim()
+
+            // pass email and password to Firebase's sign in function
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(function (res) {
+                    // response only comes if sign in succeeds
+                    console.log("SIGN IN: ", res);
+                    // redirect page to "redirect.html" file
+                    window.location = "index.html";
+                })
+                .catch(function (error) {
+                    // Dynamically responds with appropriate error message (e.g. "Email format invalid", "Incorrect password", "User does not exist", etc.)
+                    console.log(error.message);
+                });
+        })
+    </script>
+</body>
+
+</html>
