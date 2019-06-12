@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <script type="text/javascript" src="flight-api.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+   <h1>Cheapest Flights</h1>
+   <h2>Depart Date
+   <input id="departDate" type="text" placeholder="YYYY-MM-DD">
+  </h2>
+  <!-- <h2>Return Date
+    <input id="returnDate" type="text" placeholder="YYYY-MM">
+   </h2> -->
+
+  
+
+
+      <!-- <div class="form-group col-md-4">
+          <label for="inputStates"><h2>Origin</h2></label>
+          <select id="origin" class="form-control">
+            <option id="skyTaxi" ></option>
+            <option id="skyTaxi">HGK</option>
+            <option id="skyTaxi">SFO</option>
+            <option id="skyTaxi">LAX</option>
+          </select>
+        </div> -->
+    <!-- <input id="origin" type="text"> -->
+    <!-- <input id="origin" type="text"> -->
+    <!-- <div class="form-group col-md-4">
+    <label for="inputStates"><h2>destination</h2></label>
+    <select id="destination" class="custom-select">
+      <option selected>Pick an current</option> -->
+      <!-- <option value="HGK">HGK</option>
+      <option value="SFO">SFO</option>
+      <option value="LAX">LAX</option>
+    </select>
+  </div> --> 
+
+  <!-- <h2>Destination: -->
+   <!-- <input id="destination" type="text"></input> -->
+
+
+   <div class="dropdown mb-2">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Origin
+    </button> 
+    
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <button class="dropdown-item current " value="SFO">San Francisco</button>
+      <button class="dropdown-item current" value="LAX">Los Angeles</button>
+      <button class="dropdown-item current" value="BCN">Spain</button>
+      <button class="dropdown-item current" value="SEA">Seattle</button>
+      <button class="dropdown-item current" value="ATL">Atlanta</button>
+      <button class="dropdown-item current" value="DFW">Dallas</button>
+      <button class="dropdown-item current" value="DEN">Denver</button>
+      <button class="dropdown-item current" value="NYC">New York</button>
+      <button class="dropdown-item current" value="LAS">Las Vegas</button>
+    </div>
+  </div>
+  <div id="comingFrom"> </div>
+
+ 
+
+   <div class="dropdown mb-2">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Destination
+    </button> 
+    
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <button class="dropdown-item going" value="SFO">San Francisco</button>
+      <button class="dropdown-item going" value="LAX">Los Angeles</button>
+      <button class="dropdown-item going" value="HKG">Hong Kong</button>
+      <button class="dropdown-item going" value="MAD">Madrid</button>
+      <button class="dropdown-item going" value="ORD">Orlando</button>
+      <button class="dropdown-item going" value="DFW">Dallas</button>
+      <button class="dropdown-item going" value="DEN">Denver</button>
+      <button class="dropdown-item going" value="NYC">New York</button>
+      <button class="dropdown-item going" value="LAS">Las Vegas</button>
+    </div>
+  </div>
+  <div id="goingTo"> </div>
+
+  <table id="flightPrices">
+      <tr>
+          <th>
+              Price
+          </th>
+          <th>
+            Return Date
+        </th>
+        <th>
+            Website
+        </th>
+        <th>
+            Flight Changes
+        </th>
+
+      </tr>
+  
+ </table>
+
+
+
+<input id="to" value="Find" type="submit">
+</body>
+</html>
