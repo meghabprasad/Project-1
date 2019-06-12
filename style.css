@@ -1,0 +1,87 @@
+body{
+    background-image: url("https://i.ytimg.com/vi/ra58oUpM7yo/maxresdefault.jpg");
+}
+.jumbotron{
+    margin-bottom: 0px;
+   
+}
+/* .row{
+    height: 200px;   
+} */
+.row{
+    /* height: 200px;    */
+}
+.carousel-item{
+    height:246px;
+}
+.d-block{
+    /* margin-top: 100px; */
+    height:246px;
+}
+#main-container{
+border: solid black;
+background-color: white;
+
+}
+.container{
+  width: 200px;
+  margin: 0 auto;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+}  
+#main-container{
+    height: 1400px !important; 
+}
+.chat-container{
+  height: 200px;
+  overflow: auto;
+  transform: rotate(180deg);
+  direction: rtl;
+} 
+.message{
+border-bottom: solid 1px #ccc;
+padding: 20px;
+transform: rotate(180deg);
+direction: ltr;
+}
+
+.avatar{
+    float: left;
+    margin-right: 5px;
+}
+.datetime{
+    float: right;
+    color: #999;
+}
+.send-message-form input{
+    width: 50%;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+}
+button{
+/* display: none; */
+}
+#scrollbar2{
+    margin-top:0px !important;
+}
+/* 
+#main-container {
+    min-height: 100%;
+} */
+
+table, th, td{
+    border: 1px solid black;
+  
+
+}
+#flightPrices{
+    float: left;
+}
+#departDate{
+    box-sizing: border-box;
+    height: calc(1.5em + .75rem + 2px);
+    width:133px !important;
+}
