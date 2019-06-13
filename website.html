@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Italianno|Khula|Unna&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+  <!-- FIREBASE - AUTH CDN -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+  <!-- FIREBASE - REALTIME DB CDN -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+
+  <title>Finfo</title>
+  <link rel="icon" href="images/finfo_logo.png" style="width: auto;">
+</head>
+
+<body>
+  <div class="container " id="main-container">
+    <div class="jumbotron jumbotron-fluid text-white">
+      <div id="logo-div">
+        <img src="images/finfo_logo.png" id="logo" style="width: 100px; height: 100px;opacity: 1">
+        <h1 class="display-4" id="logo-text" style="opacity: 1;">FinFo</h1>
+      </div>
+      <p class="lead" style="opacity: 1;">Financial information at your fingertips!</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-7">
+        <div class="row" style="width: 200 px; margin-top: 20px ">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:10px;">
+                    Your Stocks
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="menu">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input class="form-control" id="stockNameInput" placeholder="Stock Name" style="margin-top:10px;">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input class="form-control" id="stockTickerInput" placeholder="Stock Ticker" style="margin-top:10px;">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <input type="button" class="btn btn-success" id="addStock" type="submit" value="Submit"
+                  style="height:38px; margin-top:10px;">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+
+              </div>
+              <div class="col-md-9">
+                <div id="companies">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- --------------------------------------------------------------------------------------------------------- -->
+
+        <div class="row mt-5" style="width: 200 px; margin-top: 20px ">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-4" style="margin-top:10px;">
+                <h4>Depart Date
+                  <input class="form-control" id="departDate" type="text" placeholder="YYYY-MM-DD">
+                </h4>
+
+
+                <div class="dropdown mb-2">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Origin
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <button class="dropdown-item current " value="SFO">San Francisco</button>
+                    <button class="dropdown-item current" value="LAX">Los Angeles</button>
+                    <button class="dropdown-item current" value="BCN">Spain</button>
+                    <button class="dropdown-item current" value="SEA">Seattle</button>
+                    <button class="dropdown-item current" value="HKG">Hong Kong</button>
+                    <button class="dropdown-item current" value="DFW">Dallas</button>
+                    <button class="dropwn-item current" value="MIA">Miami</button>
+                    <button class="dropdown-item current" value="NYC">New York</button>
+                    <button class="dropdown-item current" value="LAS">Las Vegas</button>
+                  </div>
+                </div>
+
+
+                <div id="comingFrom"> </div>
+
+
+
+                <div class="dropdown mb-2">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Destination
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <button class="dropdown-item going" value="SFO">San Francisco</button>
+                    <button class="dropdown-item going" value="LAX">Los Angeles</button>
+                    <button class="dropdown-item going" value="BCN">Spain</button>
+                    <button class="dropdown-item going" value="SEA">Seattle</button>
+                    <button class="dropdown-item going" value="HKG">Hong Kong</button>
+                    <button class="dropdown-item going" value="DFW">Dallas</button>
+                    <button class="dropdown-item going" value="MIA">Miami</button>
+                    <button class="dropdown-item going" value="NYC">New York</button>
+                    <button class="dropdown-item going" value="LAS">Las Vegas</button>
+                  </div>
+                </div>
+                <div id="goingTo"> </div>
+
+
+                <input id="to" value="Find" type="submit">
+              </div>
+
+
+              <div class="col-md-5 d-flex justify-content-left">
+                <table class="text-center" id="flightPrices" style="margin-top:10px;border-radius: 20px;">
+                  <thead>
+                    <tr class="center-block">
+                      <th>Price</th>
+                      <th>Return Date</th>
+                      <th>Website</th>
+                      <th>Flight Changes</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ------------------------------------------------------------------------------------------- -->
+        <div class="row mt-5">
+          <div class="col-md-12">
+
+            <!-- saved searched go here -->
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-4">
+                <select class="form-control form-control-lg currency-list" style="height:38px; margin-top:10px;">
+                  <option>Select Currency</option>
+                </select>
+              </div>
+
+              <!-- search query goes here -->
+              <div class="col-md-2" id="inputDiv">
+                <form>
+                  <!-- this button triggers new currency to be added -->
+                  <input type="button" class="btn btn-success" id="addCurrencyBtn" type="submit" value="Submit"
+                    style="height:38px; margin-top:10px;">
+                </form>
+              </div>
+            </div>
+
+            <br>
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div id="results"></div>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <container class="smooth-scroll">
+          <div class="container"style="background-color:white;border-radius:20px;opacity: 0.9;margin-left:20px;margin-top:20px;">
+            <div class="chat-container" id="stockUpdates">
+                <div class="message">
+                    <img class="avatar" src="https://placeimg.com/50/50/people?2">
+                    <div class="datetime">23/03/2016 20:40</div>
+                    <p>A message text</p>
+                </div>
+                <div class="message">
+                    <img class="avatar" src="https://placeimg.com/50/50/people?1">
+                    <div class="datetime">23/03/2016 20:40</div>
+                    <p>A message text</p>
+                </div>
+            </div>
+            <!-- <form class="send-message-form">
+        
+                          <input type="text" placeholder="Your message">
+                          <button type="submit" class="refresh" >Refresh Feed</button >  
+                      </form> -->
+          </div>
+          </container>
+          </div>
+        
+    
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="exchange-rate-api/exchange.js"></script>
+  <script src="stocks.js"></script>
+  <script src="flight-api.js"></script>
+</body>
+
+</html>

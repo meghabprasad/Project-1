@@ -9,6 +9,7 @@ body{
     margin-top: 10px;
     justify-content: center;
     border-radius: 20px !important;
+    opacity: 0.7;
 }
 /* .row{
     height: 200px;   
@@ -40,17 +41,17 @@ border-radius: 20px !important;
 .container{
   width: 200px;
   margin: 0 auto;
-  border: solid 1px #ccc;
+  /* border: solid 1px #ccc; */
   border-radius: 5px;
   overflow: hidden;
   box-sizing: border-box;
 }  
 
 #main-container{
-    height: 1400px !important; 
+    height: 1200px !important; 
 }
 .chat-container{
-  height: 200px;
+  /* height: 200px; */
   overflow: auto;
   transform: rotate(180deg);
   direction: rtl;
@@ -122,8 +123,9 @@ th{
 .row{
     font-family: 'Unna', serif;
 }
-.col-md-7{
+.col-md-12{
     background-color:white;
+    opacity: 0.9;
     border-radius: 20px;
     margin-left: 20px; 
     height: 246px;
