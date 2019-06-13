@@ -2,6 +2,7 @@ var currentUser;
 var uid = "";
 var listener;
 var stocksList = [];
+var placeHolder = {};
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -54,14 +55,21 @@ firebase.auth().onAuthStateChanged(function (user) {
             console.log("Split String");
             var result = snapshot.val().split(" ");
             console.log(result);
-            var newDropDown = $("<button class='dropdown-item stock' type='button'>" + result[0] + ": " + result[1] + "</button>");
-            newDropDown.attr("data-name", result[0]);
-            newDropDown.attr("data-ticker", result[1]);
+            var finalTicker = result[result.length - 1].toUpperCase();
+            result.splice(result.length - 1, 1);
+            var name = result.join().replace(",", " ");
+            console.log("Name");
+            console.log(name);
+            var newDropDown = $("<button class='dropdown-item stock' type='button'>" + name + ": " + finalTicker + "</button>");
+            newDropDown.attr("data-name", name);
+            newDropDown.attr("data-ticker", finalTicker);
+            name = name.replace(" ", "");
             $("#menu").append(newDropDown);
             stocksList.push({
-                name: result[0], 
-                ticker: result[1], 
+                name: name,
+                ticker: finalTicker,
             })
+            placeHolder[finalTicker] = name;
         });
 
 
@@ -114,7 +122,7 @@ $(document).on("click", ".stock", function () {
     console.log($(this).attr("data-ticker"));
     var symbol = $(this).attr("data-ticker").toUpperCase();
     var queryURL = "https://api.worldtradingdata.com/api/v1/stock?symbol=" + symbol + "&api_token=NSFmVWD6Ga8k2l24xYG6xmyFgVAzTyMSNeTi5U2oMvQp2LQlu012TwKjhCtD";
-    currentName = $(this).attr("data-name");
+    currentName = $(this).attr("data-name").replace(" ", "");
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -156,43 +164,148 @@ $(document).on("click", ".stock", function () {
 //     console.log(queryParameter);
 // })
 
-$(document).on("click", ".refresh", function() {
-    console.log("This ran");
-    var queryParameter = "";
-    for(var i = 0; i < stocksList.length; i++) {
-        if(i!==0) {
-            queryParameter = queryParameter + "," + stocksList[i].ticker;
-        }
-        else {
-            queryParameter = queryParameter + stocksList[i].ticker;
-        }
-    }
-    console.log("query parameter");
-    console.log(queryParameter);
-    var queryURL = "https://api.worldtradingdata.com/api/v1/stock?symbol=" + queryParameter + "&api_token=NSFmVWD6Ga8k2l24xYG6xmyFgVAzTyMSNeTi5U2oMvQp2LQlu012TwKjhCtD";
-    $.ajax({
-        url: queryURL, 
-        method: "GET"
-    })
-        .then(function(response) {
-            console.log(response);
-            var stockInfo = [];
-            for(var i = 0; i < response.data.length; i++) {
-                stockInfo.push({
-                    name: response.data[i].name, 
-                    ticker: response.data[i].ticker, 
-                    change: response.data[i].change_pct
-                })
-            }
-            // var newMessage = $()
-            var clearLogoURL = "https://logo.clearbit.com/" + stocksList[0].name + ".com?size=60'>";
-            $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
-            $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
-            $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
-            $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
-        })
+// $(document).on("click", ".refresh", function () {
+//     console.log("This ran");
+//     var queryParameter = "";
+//     for (var i = 0; i < stocksList.length; i++) {
+//         if (i !== 0) {
+//             queryParameter = queryParameter + "," + stocksList[i].ticker;
+//         }
+//         else {
+//             queryParameter = queryParameter + stocksList[i].ticker;
+//         }
+//     }
+//     console.log("query parameter");
+//     console.log(queryParameter);
+//     var queryURL = "https://api.worldtradingdata.com/api/v1/stock?symbol=" + queryParameter + "&api_token=NSFmVWD6Ga8k2l24xYG6xmyFgVAzTyMSNeTi5U2oMvQp2LQlu012TwKjhCtD";
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     })
+//         .then(function (response) {
+//             console.log(response);
+//             var stockInfo = [];
+//             $("#stockUpdates").empty();
+//             for (var i = 0; i < response.data.length; i++) {
+//                 stockInfo.push({
+//                     name: response.data[i].name,
+//                     ticker: response.data[i].ticker,
+//                     change: response.data[i].change_pct
+//                 })
+//                 var clearLogoURL = "https://logo.clearbit.com/" + stocksList[i].name + ".com?size=60'>";
+//                 $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[i].name + " has fluctuated " + stockInfo[i].change + " percent.</p></div>");
+//             }
 
+//             // var newMessage = $()
+//             // var clearLogoURL = "https://logo.clearbit.com/" + stocksList[0].name + ".com?size=60'>";
+//             // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+//             // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+//             // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+//             // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+
+//         })
+
+// })
+
+$(document).on("click", ".refresh", function () {
+    $("#stockUpdates").empty();
+    console.log("This ran");
+    var tracker = 0;
+    console.log("Stocks List");
+    console.log(stocksList);
+    while (tracker < stocksList.length - 5) {
+        var queryParameter = "";
+        for (var i = tracker; i < tracker + 5; i++) {
+            if (i !== 0) {
+                queryParameter = queryParameter + "," + stocksList[i].ticker;
+            }
+            else {
+                queryParameter = queryParameter + stocksList[i].ticker;
+            }
+        }
+        console.log("query parameter");
+        console.log(queryParameter);
+        var queryURL = "https://api.worldtradingdata.com/api/v1/stock?symbol=" + queryParameter + "&api_token=NSFmVWD6Ga8k2l24xYG6xmyFgVAzTyMSNeTi5U2oMvQp2LQlu012TwKjhCtD";
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+            .then(function (response) {
+                console.log("Response");
+                console.log(response);
+                var stockInfo = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    stockInfo.push({
+                        name: response.data[i].name,
+                        ticker: response.data[i].symbol,
+                        change: response.data[i].change_pct
+                    })
+                    console.log("Placeholder");
+                    console.log(placeHolder);
+                    console.log("Ticker");
+                    var ticker = response.data[i].symbol;
+                    console.log(ticker);
+                    var clearLogoURL = "https://logo.clearbit.com/" + placeHolder[ticker] + ".com?size=60'>";
+                    $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[i].name + " has fluctuated " + stockInfo[i].change + " percent.</p></div>");
+                }
+
+                // var newMessage = $()
+                // var clearLogoURL = "https://logo.clearbit.com/" + stocksList[0].name + ".com?size=60'>";
+                // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+                // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+                // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+                // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+
+            })
+            tracker+=5;
+    }
+    console.log("Tracker");
+    console.log(tracker);
+    queryParameter = "";
+    for (var i = tracker; i < stocksList.length; i++) {
+            if (i !== tracker) {
+                queryParameter = queryParameter + "," + stocksList[i].ticker;
+            }
+            else {
+                queryParameter = queryParameter + stocksList[i].ticker;
+            }
+        }
+        console.log("query parameter");
+        console.log(queryParameter);
+        var queryURL = "https://api.worldtradingdata.com/api/v1/stock?symbol=" + queryParameter + "&api_token=NSFmVWD6Ga8k2l24xYG6xmyFgVAzTyMSNeTi5U2oMvQp2LQlu012TwKjhCtD";
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+            .then(function (response) {
+                console.log("Response");
+                console.log(response);
+                var stockInfo = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    stockInfo.push({
+                        name: response.data[i].name,
+                        ticker: response.data[i].symbol,
+                        change: response.data[i].change_pct
+                    })
+                    var ticker = response.data[i].symbol;
+                    console.log("Ticker");
+                    console.log(ticker);
+                    var clearLogoURL = "https://logo.clearbit.com/" + placeHolder[ticker] + ".com?size=60'>";
+                    $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[i].name + " has fluctuated " + stockInfo[i].change + " percent.</p></div>");
+                }
+
+                // var newMessage = $()
+                // var clearLogoURL = "https://logo.clearbit.com/" + stocksList[0].name + ".com?size=60'>";
+                // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+                // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+                // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+                // $("#stockUpdates").prepend("<div class='message' style = 'display:flex'><img src='" + clearLogoURL + "<p class ='ml-2'>" + response.data[0].name + " has fluctuated " + stockInfo[0].change + " percent.</p></div>");
+
+            })
+    
 })
+
+
 
 // $("#buttons").append($("<h1>Hello!</h1>"));
 
