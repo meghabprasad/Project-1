@@ -185,7 +185,11 @@
       <div class="col-md-5">
         <container class="smooth-scroll">
           <div class="container"style="background-color:white;border-radius:20px;opacity: 0.9;margin-left:20px;margin-top:20px;">
-            <div class="chat-container" id="stockUpdates">
+              <div class="refreshDiv" style="text-align: center;margin-top:10px;">
+                  <input type="button" class="btn btn-success" id="refresh" type="submit" value="Refresh Stocks Feed"
+                    style="height:38px; margin-top:2px;margin-bottom:10px;">
+              </div>
+            <!-- <div class="chat-container" id="stockUpdates">
                 <div class="message">
                     <img class="avatar" src="https://placeimg.com/50/50/people?2">
                     <div class="datetime">23/03/2016 20:40</div>
@@ -196,7 +200,7 @@
                     <div class="datetime">23/03/2016 20:40</div>
                     <p>A message text</p>
                 </div>
-            </div>
+            </div> -->
             <!-- <form class="send-message-form">
         
                           <input type="text" placeholder="Your message">
@@ -235,6 +239,7 @@
   <script src="exchange-rate-api/exchange.js"></script>
   <script src="stocks.js"></script>
   <script src="flight-api.js"></script>
+  <!-- <script src="auth.js"></script> -->
 </body>
 
 </html>

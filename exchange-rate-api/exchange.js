@@ -17,7 +17,7 @@ function callApi (){
         console.log(response.base);
         console.log(conversionValue);
         var resultsDiv = $("<div>");
-        resultsDiv.attr("style", "text-align: center");
+        resultsDiv.attr("style", "text-align: center; font-size: 30px");
         resultsDiv.text("1");
         resultsDiv.text("1 USD is "+ conversionValue + " " + endCurrency);
         $("#results").append(resultsDiv);
@@ -37,7 +37,7 @@ function callApi (){
         //console.log(logo);
         var logoDiv = $("<div>");
         logoDiv.text(logo);
-        logoDiv.attr("style", "text-align: center; font-size: 30px; color: blue;");
+        logoDiv.attr("style", "text-align: center; font-size: 50px; color: blue;");
         $("#results").append(logoDiv);
     })
 }
