@@ -1,442 +1,154 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="style.css" rel="stylesheet" type="text/css">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <!-- FIREBASE - BASE CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <!-- FIREBASE - AUTH CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <!-- FIREBASE - REALTIME DB CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
+    <!-- <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script> -->
+    <!-- Add Firebase products that you want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="login.css">
 
-
-  <title>Project 1</title>
+    <title>Sign-Up Page</title>
 </head>
 
+
 <body>
-  <div class="container" id="main-container">
-    <div class="jumbotron jumbotron-fluid bg-dark text-white content-center" style="
-    margin-bottom: 20px;">
-      <div class="container">
-        <h1 class="display-4">FINFO</h1>
-        <p class="lead">One stop shop for finance,flight & retail information.</p>
-      </div>
-    </div>
+    <div class="main container">
 
-    <div class="row" style="width: 200 px; margin-top: 20px ">
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Your Stocks
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="menu">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <input class="form-control" id="stockNameInput" placeholder="Stock Name">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <input class="form-control" id="stockTickerInput" placeholder="Stock Ticker">
-            </div>
-          </div>
-          <div class="col-md-3">
-            <button type="button" id="addStock">
-              Add stock
-            </button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3">
+        <!-- <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '{378290079456982}',
+                    cookie: true,
+                    xfbml: true,
+                    version: '{v3.3}'
+                });
 
-          </div>
-          <div class="col-md-9">
-            <div id="companies">
-            </div>
-          </div>
-        </div>
-      </div>
+                FB.AppEvents.logPageView();
+
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
 
 
-      <div class="col-md-4">
-        <container class="smooth-scroll">
-          <div class="container">
-            <div class="chat-container">
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-            </div>
-            <form class="send-message-form">
+        </script> -->
 
-              <input type="text" placeholder="Your message">
-              <button type="submit">Send</button>
-            </form>
-          </div>
-      </div>
-      </container>
+      <!-- <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=378290079456982&autoLogAppEvents=1"></script> --> -->
 
-    </div>
-    <!-- --------------------------------------------------------------------------------------------------------- -->
-    <div class="row mt-5" style="width: 200 px; margin-top: 20px ">
-
-      <div class="col-md-2">
-        <h4>Depart Date
-          <input class="form-control" id="departDate" type="text" placeholder="YYYY-MM-DD">
-        </h4>
-
-
-        <div class="dropdown mb-4">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Origin
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button class="dropdown-item current " value="SFO">San Francisco</button>
-            <button class="dropdown-item current" value="LAX">Los Angeles</button>
-            <button class="dropdown-item current" value="BCN">Spain</button>
-            <button class="dropdown-item current" value="SEA">Seattle</button>
-            <button class="dropdown-item current" value="HKG">Hong Kong</button>
-            <button class="dropdown-item current" value="DFW">Dallas</button>
-            <button class="dropdown-item current" value="MIA">Miami</button>
-            <button class="dropdown-item current" value="NYC">New York</button>
-            <button class="dropdown-item current" value="LAS">Las Vegas</button>
-          </div>
-        </div>
-
-
-        <div id="comingFrom"> </div>
-
-
-
-        <div class="dropdown mb-4">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Destination
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button class="dropdown-item going" value="SFO">San Francisco</button>
-            <button class="dropdown-item going" value="LAX">Los Angeles</button>
-            <button class="dropdown-item going" value="BCN">Spain</button>
-            <button class="dropdown-item going" value="SEA">Seattle</button>
-            <button class="dropdown-item going" value="HKG">Hong Kong</button>
-            <button class="dropdown-item going" value="DFW">Dallas</button>
-            <button class="dropdown-item going" value="MIA">Miami</button>
-            <button class="dropdown-item going" value="NYC">New York</button>
-            <button class="dropdown-item going" value="LAS">Las Vegas</button>
-          </div>
-        </div>
-        <div id="goingTo"> </div>
-
-        <!-- <div class="col-md-8"></div> -->
-
-
-        <input id="to" value="Find" type="submit">
-      </div>
-
-
-
-      <div class="col-md-10 d-flex justify-content-left">
-        <table class="text-center" id="flightPrices">
-          <thead>
-            <tr class="center-block">
-              <th>Price</th>
-              <th>Return Date</th>
-              <th>Website</th>
-              <th>Flight Changes</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-    <!-- <div id="carouselExampleControls2" class="carousel slide">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="https://ei.marketwatch.com/Multimedia/2019/03/11/Photos/ZH/MW-HF425_bull_a_20190311103941_ZH.jpg?uuid=815c766c-440b-11e9-939c-9c8e992d421e.jpg"
-                class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="https://ak1.picdn.net/shutterstock/videos/2195491/thumb/7.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="https://ak1.picdn.net/shutterstock/videos/2195491/thumb/7.jpg" class="d-block w-100" alt="...">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls2" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div> -->
-    <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="..." class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="..." class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="..." class="d-block w-100" alt="...">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div> -->
-
-
-
-    <!-- <div class="col-md-4 mt-5" id="scrollbar2"> -->
-    <!-- <container class="smooth-scroll">
-          <div class="container">
-            <div class="chat-container">
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-            </div>
-            <form class="send-message-form">
-
-              <input type="text" placeholder="Your message">
-              <button type="submit">Send</button>
-            </form> -->
-    <!-- </div> -->
-
-    <!-- </container> -->
-
-    <div class="row mt-5">
-      <div class="col-md-8">
-
-        <!-- saved searched go here -->
-        <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-4">
-            <select class="form-control form-control-lg currency-list">
-              <option>Select Currency</option>
-            </select>
-          </div>
-
-
-          <!-- <div class="col-md-4 dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2 exchange-dropdown" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  My Saved Currencies
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <button class="dropdown-item" type="button" data-name="EUR">EUR</button>
-                  <button class="dropdown-item" type="button" data-name="CAD">CAD</button>
-                  <button class="dropdown-item" type="button" data-name="GBP">GBP</button>
-              </div>
-          </div> -->
-          <!-- search query goes here -->
-          <div class="col-md-2" id="inputDiv">
+        <div class="jumbotron">
+            <h1 class="display-4 text-white">Finfo!</h1>
+            <p class="lead text-white">One stop shop for finance,flight & retail information.</p>
+            <hr class="my-4">
+            <p style="color:white">Login using your information or Sign-Up to get started.</p>
+            <br>
             <form>
-              <!-- this button triggers new currency to be added -->
-              <input type="button" class="btn btn-success" id="addCurrencyBtn" type="submit" value="Submit"
-                style="height:48px">
-            </form>
-          </div>
+                <div class="form-row align-items-center">
+                    <!-- <div class="col-auto">
+                        <label class="sr-only" id="si-email" for="inlineFormInput">Username</label>
+                        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Username">
+                    </div>
+                    <div class="col-auto">
+                        <label class="sr-only" id="si-password" for="inlineFormInputGroup">Password</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend"> -->
+                    <!-- <div class="input-group-text">@</div> -->
+                    <!-- </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="col-auto text-white">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+                            <label class="form-check-label" for="autoSizingCheck">
+                                Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" id="sign-in" class="btn btn-primary mb-2">Sign In</button> -->
+                    <h1>SIGN IN</h1>
+                    <input type="text" name="email" id="si-email">
+                    <input type="text" name="password" id="si-password">
+                    <button id="sign-in">SIGN IN</button>
+                </div>
         </div>
-
+        </form>
         <br>
-        <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-6">
-            <div id="results"></div>
-          </div>
-          <div class="col-md-3"></div>
-        </div>
+        
+            <!-- <div class="fb-login-button" id="fb" data-width="" data-size="large" data-button-type="continue_with"
+                data-auto-logout-link="true" data-use-continue-as="false"></div> -->
+        <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Sign-Up</a>
 
-      </div>
 
-      <div class="col-md-4 mt-5" id="scrollbar2">
-        <container class="smooth-scroll">
-          <div class="container">
-            <div class="chat-container">
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?1">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
-              <div class="message">
-                <img class="avatar" src="https://placeimg.com/50/50/people?2">
-                <div class="datetime">23/03/2016 20:40</div>
-                <p>A message text</p>
-              </div>
+        <form>
+            <div class="form-row align-items-center">
+                 <div class="col-auto"></div>
+                    <input type="text" name="email" id="si-email">
+                </div>
+                <div class="col-auto">
+                    <label class="sr-only" id="su-password" for="inlineFormInputGroup">Password</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend"> -->
+                <!-- <div class="input-group-text">@</div> -->
+                <!-- </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Password">
+                    </div>
+                </div>
+                <div class="col-auto text-white">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+                        <label class="form-check-label" for="autoSizingCheck">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" id="sign-up" class="btn btn-primary mb-2">Sign Up</button> -->
+                <h1>SIGN UP</h1>
+                <input type="text" name="email" id="su-email">
+                <input type="text" name="password" id="su-password">
+                <button id="sign-up">SIGN UP</button>
             </div>
-            <form class="send-message-form">
-
-              <input type="text" placeholder="Your message">
-              <button type="submit">Send</button>
-            </form>
-          </div>
-        </container>
-      </div>
     </div>
-  </div>
-  
-  
-  
+    </form>
+
+    </div>
 
 
 
@@ -448,18 +160,65 @@
 
 
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="exchange-rate-api/exchange.js"></script>
-  <script src="stocks.js"></script>
-  <script src="flight-api.js"></script>
+
+
+
+
+    <!-- <form>
+            <div class="form-container">
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefault01">First name</label>
+                        <input type="text" class="form-control" id="validationDefault01" placeholder="First name"
+                            value="" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefault02">Last name</label>
+                        <input type="text" class="form-control" id="validationDefault02" placeholder="Last name"
+                            value="" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefaultUsername">Username</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                            </div>
+                            <input type="text" class="form-control" id="validationDefaultUsername"
+                                placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault03">City</label>
+                        <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="validationDefault04">State</label>
+                        <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="validationDefault05">Zip</label>
+                        <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                        <label class="form-check-label" for="invalidCheck2">
+                            Agree to terms and conditions
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Sign Up</button>
+            </div>
+        </form> -->
+
+
+
+    </div>
+
+    <script src="login.js"></script>
 </body>
 
 </html>

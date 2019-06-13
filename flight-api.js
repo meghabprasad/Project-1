@@ -6,7 +6,7 @@ $(document).ready(function(event){
   origin =$(this).val()
   console.log(this)
   console.log(origin);
-  $("#comingFrom").text(origin);
+  $("#comingFrom").prepend(origin);
   
   })
   
@@ -14,20 +14,28 @@ $(document).ready(function(event){
      destination =$(this).val()
     console.log(this)
     console.log(destination);
-    $("#goingTo").text(destination);
+    $("#goingTo").prepend(destination);
     
   })
   
   
   })
-  
+
   
   
   $("#to").on("click",function(){
     
     $(".graph").empty();
   
-    var departDate=$("#departDate").val()
+    
+    var year=$("#year").val();
+    console.log(year);
+    var month=$("#month").val();
+    console.log(month);
+    var day=$("#inputState").val();
+    console.log(day);
+
+    var departDate= year+"-"+month+"-"+day
     console.log(departDate)
   
     
@@ -41,7 +49,7 @@ $(document).ready(function(event){
     console.log(queryURL);
     console.log(response);
   
-    for(var i = 0; i<5;i++){
+    for(var i = 0; i<8;i++){
       console.log(response.current_depart_date_prices)
       var result=response.current_depart_date_prices
         tr=$("<tr>");
@@ -50,13 +58,14 @@ $(document).ready(function(event){
         tr.append("<td>"+result[i].value.toFixed(2));
         tr.append("<td>"+result[i].return_date+"</td>");
         console.log(typeof(tr));
-        tr.append("<td>"+result[i].gate+"</td>");
+        tr.append("<td><a href='http://google.com/search?q="+result[i].gate+" Flight 'target=_blank>"+result[i].gate+"</a></td>");
         tr.append("<td>"+result[i].number_of_changes+"</td>");
         $("#flightPrices").append(tr)
   
     console.log(result[i].return_date);
     console.log(result[i].value)
-    console.log(result[i].gate)
+    console.log("<a href='http://google.com/search?q="+result[i].gate+"></a>")
+    console.log("<a href='http://"+result[i].gate+"/?gate="+result[i].gate+"'>"+result[i].gate+"</a>")
     console.log(result[i].number_of_changes)
     
       
@@ -77,5 +86,5 @@ $(document).ready(function(event){
   
   })
   
-  })
+  
   
