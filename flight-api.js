@@ -41,7 +41,7 @@ $(document).ready(function(event){
     console.log(queryURL);
     console.log(response);
   
-    for(var i = 0; i<5;i++){
+    for(var i = 0; i<8;i++){
       console.log(response.current_depart_date_prices)
       var result=response.current_depart_date_prices
         tr=$("<tr>");
@@ -77,5 +77,5 @@ $(document).ready(function(event){
   
   })
   
-  })
+ 
   

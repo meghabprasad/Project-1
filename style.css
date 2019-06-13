@@ -2,8 +2,13 @@ body{
     background-image: url("https://i.ytimg.com/vi/ra58oUpM7yo/maxresdefault.jpg");
 }
 .jumbotron{
+    display: flex;
+    flex-direction: column;
     margin-bottom: 0px;
-   
+    background-color:black !important;
+    margin-top: 10px;
+    justify-content: center;
+    border-radius: 20px !important;
 }
 /* .row{
     height: 200px;   
@@ -17,9 +22,20 @@ body{
     height:246px;
 }
 #main-container{
-border: solid black;
-background-color: white;
+/* border: solid black; */
+/* background-color: white; */
+border-radius: 20px !important;
 
+/* opacity: 0.5; */
+}
+
+
+#logo-div{
+    display: flex;
+    border: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 .container{
   width: 200px;
@@ -29,6 +45,7 @@ background-color: white;
   overflow: hidden;
   box-sizing: border-box;
 }  
+
 #main-container{
     height: 1400px !important; 
 }
@@ -70,10 +87,13 @@ button{
     min-height: 100%;
 } */
 
+
 table, th, td{
     border: 1px solid black;
-  
-
+}
+th{
+    padding-left: 20px;
+    padding-right: 20px;
 }
 #flightPrices{
     float: left;
@@ -82,4 +102,29 @@ table, th, td{
     box-sizing: border-box;
     height: calc(1.5em + .75rem + 2px);
     width:133px !important;
+}
+.display-4{
+    font-family: 'Unna', serif;
+}
+#info-text{
+    font-family: 'Italianno', cursive;
+}
+.lead{
+    font-family: 'Unna', serif;
+    text-align: center;
+}
+/* #logo{
+    float: left;
+}
+#logo-text{
+    float: left;
+} */
+.row{
+    font-family: 'Unna', serif;
+}
+.col-md-7{
+    background-color:white;
+    border-radius: 20px;
+    margin-left: 20px; 
+    height: 246px;
 }

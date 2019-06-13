@@ -5,6 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Italianno|Khula|Unna&display=swap" rel="stylesheet">
   <link href="style.css" rel="stylesheet" type="text/css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -16,22 +17,22 @@
 </head>
 
 <body>
-  <div class="container" id="main-container">
-    <div class="jumbotron jumbotron-fluid bg-dark text-white content-center" style="
-    margin-bottom: 20px;">
-      <div class="container">
-        <h1 class="display-4">FINFO</h1>
-        <p class="lead">One stop shop for finance,flight & retail information.</p>
+  <div class="container " id="main-container">
+    <div class="jumbotron jumbotron-fluid text-white">
+      <div id="logo-div">
+          <img src="images/finfo_logo.png" id="logo" style="width: 100px; height: 100px;">
+          <h1 class="display-4" id="logo-text">FinFo</h1>
       </div>
+      <p class="lead">Financial information at your fingertips!</p>
     </div>
 
     <div class="row" style="width: 200 px; margin-top: 20px ">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="row">
           <div class="col-md-3">
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+                aria-haspopup="true" aria-expanded="false" style="margin-top:10px;">
                 Your Stocks
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="menu">
@@ -40,18 +41,17 @@
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <input class="form-control" id="stockNameInput" placeholder="Stock Name">
+              <input class="form-control" id="stockNameInput" placeholder="Stock Name" style="margin-top:10px;" >
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <input class="form-control" id="stockTickerInput" placeholder="Stock Ticker">
+              <input class="form-control" id="stockTickerInput" placeholder="Stock Ticker" style="margin-top:10px;">
             </div>
           </div>
           <div class="col-md-3">
-            <button type="button" id="addStock">
-              Add stock
-            </button>
+            <input type="button" class="btn btn-success" id="addStock" type="submit" value="Submit"
+                style="height:38px; margin-top:10px;">
           </div>
         </div>
         <div class="row">
@@ -68,7 +68,7 @@
 
       <div class="col-md-4">
         <container class="smooth-scroll">
-          <div class="container">
+          <div class="container" style="background-color: white; border-radius: 20px; width: 422px;">
             <div class="chat-container">
               <div class="message">
                 <img class="avatar" src="https://placeimg.com/50/50/people?1">
@@ -132,8 +132,9 @@
 
     </div>
     <!-- --------------------------------------------------------------------------------------------------------- -->
+    
     <div class="row mt-5" style="width: 200 px; margin-top: 20px ">
-
+      <div class="col-md-7">
       <div class="col-md-2">
         <h4>Depart Date
           <input class="form-control" id="departDate" type="text" placeholder="YYYY-MM-DD">
@@ -204,7 +205,8 @@
         </table>
       </div>
     </div>
-
+    </div>
+  
 
 
 
@@ -325,13 +327,13 @@
     <!-- </container> -->
 
     <div class="row mt-5">
-      <div class="col-md-8">
+      <div class="col-md-7">
 
         <!-- saved searched go here -->
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-4">
-            <select class="form-control form-control-lg currency-list">
+            <select class="form-control form-control-lg currency-list"style="height:38px; margin-top:10px;">
               <option>Select Currency</option>
             </select>
           </div>
@@ -353,7 +355,7 @@
             <form>
               <!-- this button triggers new currency to be added -->
               <input type="button" class="btn btn-success" id="addCurrencyBtn" type="submit" value="Submit"
-                style="height:48px">
+                style="height:38px; margin-top:10px;">
             </form>
           </div>
         </div>
@@ -369,7 +371,7 @@
 
       </div>
 
-      <div class="col-md-4 mt-5" id="scrollbar2">
+      <!-- <div class="col-md-4 mt-5" id="scrollbar2">
         <container class="smooth-scroll">
           <div class="container">
             <div class="chat-container">
@@ -431,12 +433,12 @@
             </form>
           </div>
         </container>
-      </div>
+      </div> -->
     </div>
   </div>
-  
-  
-  
+
+
+
 
 
 
