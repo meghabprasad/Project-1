@@ -1,6 +1,70 @@
+var currentUser;
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyBefbqzOn-x0T7jfEfveEuQZ5JnNgw28MA",
+    authDomain: "login-test-e8efe.firebaseapp.com",
+    databaseURL: "https://login-test-e8efe.firebaseio.com",
+    projectId: "login-test-e8efe",
+    storageBucket: "login-test-e8efe.appspot.com",
+    messagingSenderId: "962526021188",
+    appId: "1:962526021188:web:cc26c4d8b489f2a5"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+var database = firebase.database();
+
+// FIREBASE AUTH EVENT LISTENER
+// ----------------------------
+// When this page loads, this event will automatically be triggered; it checks to see if there is a user logged in to the Firebase app that's configured on line 31.
+firebase.auth().onAuthStateChanged(function (user) {
+
+    // If there's a user logged in:
+    if (user) {
+
+        // log user info to the console
+        console.log("user is signed in!");
+        console.log("USER: ", user);
+
+        // access logged in user's data
+        database.ref("/" + user.uid).once("value").then(function (snapshot) {
+            // log all user's info to console
+            console.log(snapshot.val());
+            // Set text content of header to be user's email that's stored in realtime db
+            $("#user").text(snapshot.val().email);
+        });
+        if (!("stock" in user)) {
+            console.log("We got here");
+            // database.ref("/" + user.uid).push({
+            //     stocks: "test"
+            // })
+        }
+        currentUser = user;
+
+    } else {
+        // if no user logged in, then redirect them back to sign in page
+        window.location = "loginPage.html";
+    }
+    console.log("User stock");
+    console.log(currentUser.stock);
+});
+
+// If #sign-out button is clicked:
+$("#sign-out").on("click", function () {
+
+    // Execute Firebase sign out function.
+    firebase.auth().signOut()
+        .then(function () {
+            // Sign-out successful.
+        }).catch(function (error) {
+            // An error happened.
+        });
+})
+
 var currentName;
 
-$("#addStock").on("click", function() {
+$("#addStock").on("click", function () {
     if ($("#stockInput").val() != "") {
         // var newButton = $("<button>");
 
@@ -8,17 +72,20 @@ $("#addStock").on("click", function() {
         // newButton.html("<strong>" + $('#stockTickerInput').val() + ":" +  "</strong>");
         // newButton.attr("data-stock", $("#stockInput").val());
         // $("#buttons").append(newButton);
-        
+
         var newDropDown = $("<button class='dropdown-item stock' type='button'>" + $("#stockNameInput").val() + ": " + $("#stockTickerInput").val() + "</button>");
         newDropDown.attr("data-name", $("#stockNameInput").val());
         newDropDown.attr("data-ticker", $("#stockTickerInput").val());
+        database.ref("/" + currentUser.uid + "/stocks").push($("#stockNameInput").val() + " " + $("#stockTickerInput").val());
         $("#stockNameInput").val("");
         $("#stockTickerInput").val("");
         $("#menu").append(newDropDown);
+        console.log("Current User");
+        console.log(currentUser);
     }
 })
 
-$(document).on("click", ".stock", function() {
+$(document).on("click", ".stock", function () {
     $("#companies").empty();
     console.log("data-ticker");
     console.log($(this).attr("data-ticker"));
@@ -26,11 +93,11 @@ $(document).on("click", ".stock", function() {
     var queryURL = "https://api.worldtradingdata.com/api/v1/stock?symbol=" + symbol + "&api_token=NSFmVWD6Ga8k2l24xYG6xmyFgVAzTyMSNeTi5U2oMvQp2LQlu012TwKjhCtD";
     currentName = $(this).attr("data-name");
     $.ajax({
-        url: queryURL, 
+        url: queryURL,
         method: "GET"
     })
 
-        .then(function(response) {
+        .then(function (response) {
             console.log(response);
             var newElem = $("<div>");
             console.log("Name");
@@ -55,3 +122,6 @@ $(document).on("click", ".stock", function() {
 
 
 //logo API key sk_d400cf587ab785dbd12541eeeab3a581
+
+console.log("User");
+console.log(currentUser);
