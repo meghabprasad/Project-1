@@ -7,10 +7,7 @@ var firebaseConfig = {
     storageBucket: "login-test-e8efe.appspot.com",
     messagingSenderId: "962526021188",
     appId: "1:962526021188:web:cc26c4d8b489f2a5"
-
-    // YOUR APP CONFIG HERE! MAKE SURE YOU ENABLE EMAIL/PASSWORD AUTH IN THE FIREBASE CONSOLE.
   };
-
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
