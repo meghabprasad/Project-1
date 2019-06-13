@@ -1,4 +1,6 @@
 var currentUser;
+var uid = "";
+var listener;
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -41,6 +43,22 @@ firebase.auth().onAuthStateChanged(function (user) {
             // })
         }
         currentUser = user;
+        uid = currentUser.uid;
+        listener = database.ref("/" + uid + "/stocks").on("child_added", function (snapshot) {
+
+            // Display the viewer count in the html.
+            // The number of online users is the number of children in the connections list.
+            console.log("stocks to follow");
+            console.log(snapshot.val());
+            console.log("Split String");
+            var result = snapshot.val().split(" ");
+            console.log(result);
+            var newDropDown = $("<button class='dropdown-item stock' type='button'>" + result[0] + ": " + result[1] + "</button>");
+            newDropDown.attr("data-name", result[0]);
+            newDropDown.attr("data-ticker", result[1]);
+            $("#menu").append(newDropDown);
+        });
+
 
     } else {
         // if no user logged in, then redirect them back to sign in page
@@ -98,6 +116,7 @@ $(document).on("click", ".stock", function () {
     })
 
         .then(function (response) {
+            console.log("Response");
             console.log(response);
             var newElem = $("<div>");
             console.log("Name");
@@ -123,5 +142,16 @@ $(document).on("click", ".stock", function () {
 
 //logo API key sk_d400cf587ab785dbd12541eeeab3a581
 
-console.log("User");
-console.log(currentUser);
+// console.log("User");
+// console.log(currentUser);
+
+
+    //....
+
+// database.ref("/" + uid + "/stocks").on("child_added", function(snapshot) {
+
+//     // Display the viewer count in the html.
+//     // The number of online users is the number of children in the connections list.
+//     console.log("stocks to follow");
+//     console.log(snapshot.val());
+//   });
