@@ -1,19 +1,14 @@
-.body{
-    background-color: navy;
+body{
+    background-image: url("https://i.ytimg.com/vi/ra58oUpM7yo/maxresdefault.jpg");
 }
 .jumbotron{
     margin-bottom: 0px;
-    
+   
 }
-<<<<<<< HEAD
 /* .row{
     height: 200px;   
 } */
-=======
-.row{
-    /* height: 200px;    */
-}
->>>>>>> 100e73444cfb7aae6fbcf161bd2791de34ced902
+
 .carousel-item{
     height:246px;
 }
@@ -23,6 +18,7 @@
 }
 #main-container{
 border: solid black;
+background-color: white;
 
 }
 .container{
@@ -73,3 +69,17 @@ button{
 #main-container {
     min-height: 100%;
 } */
+
+table, th, td{
+    border: 1px solid black;
+  
+
+}
+#flightPrices{
+    float: left;
+}
+#departDate{
+    box-sizing: border-box;
+    height: calc(1.5em + .75rem + 2px);
+    width:133px !important;
+}

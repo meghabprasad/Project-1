@@ -55,8 +55,8 @@
           </div>
         </div>
         <div class="row">
-          <div class = "col-md-3">
-            
+          <div class="col-md-3">
+
           </div>
           <div class="col-md-9">
             <div id="companies">
@@ -131,11 +131,89 @@
       </container>
 
     </div>
-
-
+    <!-- --------------------------------------------------------------------------------------------------------- -->
     <div class="row mt-5" style="width: 200 px; margin-top: 20px ">
-      <div class="col-md-8">
-        <div id="carouselExampleControls2" class="carousel slide">
+
+      <div class="col-md-2">
+        <h4>Depart Date
+          <input class="form-control" id="departDate" type="text" placeholder="YYYY-MM-DD">
+        </h4>
+
+
+        <div class="dropdown mb-4">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Origin
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button class="dropdown-item current " value="SFO">San Francisco</button>
+            <button class="dropdown-item current" value="LAX">Los Angeles</button>
+            <button class="dropdown-item current" value="BCN">Spain</button>
+            <button class="dropdown-item current" value="SEA">Seattle</button>
+            <button class="dropdown-item current" value="HKG">Hong Kong</button>
+            <button class="dropdown-item current" value="DFW">Dallas</button>
+            <button class="dropdown-item current" value="MIA">Miami</button>
+            <button class="dropdown-item current" value="NYC">New York</button>
+            <button class="dropdown-item current" value="LAS">Las Vegas</button>
+          </div>
+        </div>
+
+
+        <div id="comingFrom"> </div>
+
+
+
+        <div class="dropdown mb-4">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Destination
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button class="dropdown-item going" value="SFO">San Francisco</button>
+            <button class="dropdown-item going" value="LAX">Los Angeles</button>
+            <button class="dropdown-item going" value="BCN">Spain</button>
+            <button class="dropdown-item going" value="SEA">Seattle</button>
+            <button class="dropdown-item going" value="HKG">Hong Kong</button>
+            <button class="dropdown-item going" value="DFW">Dallas</button>
+            <button class="dropdown-item going" value="MIA">Miami</button>
+            <button class="dropdown-item going" value="NYC">New York</button>
+            <button class="dropdown-item going" value="LAS">Las Vegas</button>
+          </div>
+        </div>
+        <div id="goingTo"> </div>
+
+        <!-- <div class="col-md-8"></div> -->
+
+
+        <input id="to" value="Find" type="submit">
+      </div>
+
+
+
+      <div class="col-md-10 d-flex justify-content-left">
+        <table class="text-center" id="flightPrices">
+          <thead>
+            <tr class="center-block">
+              <th>Price</th>
+              <th>Return Date</th>
+              <th>Website</th>
+              <th>Flight Changes</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- <div id="carouselExampleControls2" class="carousel slide">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img
@@ -157,8 +235,8 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
-        </div>
-        <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        </div> -->
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="..." class="d-block w-100" alt="...">
@@ -179,11 +257,11 @@
             <span class="sr-only">Next</span>
           </a>
         </div> -->
-      </div>
 
 
-      <div class="col-md-4 mt-5" id="scrollbar2">
-        <container class="smooth-scroll">
+
+    <!-- <div class="col-md-4 mt-5" id="scrollbar2"> -->
+    <!-- <container class="smooth-scroll">
           <div class="container">
             <div class="chat-container">
               <div class="message">
@@ -241,22 +319,23 @@
 
               <input type="text" placeholder="Your message">
               <button type="submit">Send</button>
-            </form>
-          </div>
-      </div>
-      </container>
-    </div>
+            </form> -->
+    <!-- </div> -->
+
+    <!-- </container> -->
+
     <div class="row mt-5">
       <div class="col-md-8">
+
         <!-- saved searched go here -->
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-4">
             <select class="form-control form-control-lg currency-list">
-                <option>Select Currency</option>
-              </select>
-            </div>
-              
+              <option>Select Currency</option>
+            </select>
+          </div>
+
 
           <!-- <div class="col-md-4 dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2 exchange-dropdown" data-toggle="dropdown"
@@ -270,21 +349,22 @@
               </div>
           </div> -->
           <!-- search query goes here -->
-          <div class = "col-md-2" id = "inputDiv">
-              <form>
-                  <!-- this button triggers new currency to be added -->
-                  <input type="button" class="btn btn-success" id="addCurrencyBtn" type="submit" value="Submit" style="height:48px">
-              </form> 
-          </div> 
-        </div>   
+          <div class="col-md-2" id="inputDiv">
+            <form>
+              <!-- this button triggers new currency to be added -->
+              <input type="button" class="btn btn-success" id="addCurrencyBtn" type="submit" value="Submit"
+                style="height:48px">
+            </form>
+          </div>
+        </div>
 
         <br>
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6">
             <div id="results"></div>
-          </div> 
-          <div class="col-md-3"></div> 
+          </div>
+          <div class="col-md-3"></div>
         </div>
 
       </div>
@@ -350,11 +430,13 @@
               <button type="submit">Send</button>
             </form>
           </div>
-          </container>
+        </container>
       </div>
     </div>
   </div>
-  </div>
+  
+  
+  
 
 
 
@@ -375,8 +457,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="exchange-rate-api/exchange.js"></script>  
+  <script src="exchange-rate-api/exchange.js"></script>
   <script src="stocks.js"></script>
+  <script src="flight-api.js"></script>
 </body>
 
 </html>
