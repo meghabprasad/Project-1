@@ -1,5 +1,7 @@
 body{
     background-image: url("https://i.ytimg.com/vi/ra58oUpM7yo/maxresdefault.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .jumbotron{
     display: flex;

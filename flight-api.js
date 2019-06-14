@@ -67,7 +67,7 @@ $(document).ready(function(event){
     console.log("<a href='http://google.com/search?q="+result[i].gate+"></a>")
     console.log("<a href='http://"+result[i].gate+"/?gate="+result[i].gate+"'>"+result[i].gate+"</a>")
     console.log(result[i].number_of_changes)
-    ($(".last").text(''));
+    $(".last").text('');
       
     // $("#flightPrices").append("<td class='well'>"+ result[i].value.toFixed(2)+ "</td>"+"<td class='member-name'>" +result[0].return_date + " </td>"+ "<td class='member-role'>" +result[0].gate+" </td>" + "<td class='member-startDate'>"+ result[0].number_of_changes +"</td>");
     
