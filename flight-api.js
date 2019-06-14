@@ -39,7 +39,7 @@ $(document).ready(function(event){
     console.log(departDate)
   
     
-  var queryURL="http://min-prices.aviasales.ru/calendar_preload?origin="+origin+"&destination="+ destination+"&depart_date="+ departDate +"&one_way=false&currency=usd&show_to_affiliates=false"
+  var queryURL="https://min-prices.aviasales.ru/calendar_preload?origin="+origin+"&destination="+ destination+"&depart_date="+ departDate +"&one_way=false&currency=usd&show_to_affiliates=false"
   
   $.ajax({
     url:queryURL,
