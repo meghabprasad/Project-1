@@ -1,10 +1,40 @@
+html{
+    height: 790px;
+}
+body{
+    background-image: url(https://ak0.picdn.net/shutterstock/videos/28544560/thumb/1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black
+    
+}
+
+
 .jumbotron{
-    margin-top: 2%;
-    background-image: url(https://ak0.picdn.net/shutterstock/videos/28544560/thumb/1.jpg)
- 
+    margin-top: 10%;
+    background-image: url(http://www.sclance.com/backgrounds/stock-market-background/stock-market-background_2130593.png);
+    background-size: cover;
+    background-repeat: no-repeat
  }
  
  .form-container{
     background-color:white;
  
+ }
+
+ .auth-container{
+     display: flex;
+     justify-content: space-around;
+ }
+ .auth-div{
+     width: 40%;
+     display: flex;
+     flex-direction: column;
+     align-items: left;
+ }
+
+ .auth-div input {
+     border-radius: 3px;
+     background-color: rgba(255, 255, 255,);
+     color:black;
  }
